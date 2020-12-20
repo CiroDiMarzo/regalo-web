@@ -19,22 +19,39 @@ namespace regalo_web.Repositories
             this._data = new Dictionary<string, List<QuestionModel>> {
                 { GlobalConstants.Daniela, new List<QuestionModel> {
                     new QuestionModel {
-                        Question = "Come si chiama l'artista?",
-                        ImagUrl = "arte.jpg",
+                        Id = 1,
+                        Question = "In quale università insegna l'artista?",
+                        ImageUrl = "arte.jpg",
                         Options = new List<string> {
-                            "Fabrizio",
-                            "Patrizio",
-                            "Pancrazio"
+                            "Della Saggezza",
+                            "Della Bellezza",
+                            "Della Calvizia"
                         },
                         Answers = new List<string> {
-                            "Ogni tanto veniva chiamato cosi...ma no",
+                            "Ne ha da condividere...però no",
                             GlobalConstants.CorrectAnswer,
-                            "ahah. no."
+                            "Potrei essere interessato! Ma no."
                         }
                     },
                     new QuestionModel {
+                        Id = 2,
+                        Question = "Dove è stata scattata questa foto?",
+                        ImageUrl = "trio.jpg",
+                        Options = new List<string> {
+                            "In Sud Africa",
+                            "A Pollena Trocchia",
+                            "In India"
+                        },
+                        Answers = new List<string> {
+                            GlobalConstants.CorrectAnswer,
+                            "eh? O_o",
+                            "No, ma era come se lo fosse..."
+                        }
+                    },
+                    new QuestionModel {
+                        Id = 3,
                         Question = "Chi abita in questa fonte?",
-                        ImagUrl = "mojenca.jpg",
+                        ImageUrl = "mojenca.jpg",
                         Options = new List<string> {
                             "Un tritone",
                             "Un drago",
@@ -43,28 +60,15 @@ namespace regalo_web.Repositories
                         Answers = new List<string> {
                             GlobalConstants.CorrectAnswer,
                             "Magari!",
-                            "Forse lo era, ma restiamo pragmatici per adesso"
-                        }
-                    },
-                    new QuestionModel {
-                        Question = "Dove è stata scattata questa foto?",
-                        ImagUrl = "trio.jpg",
-                        Options = new List<string> {
-                            "In Sud Africa",
-                            "A Pollena Trocchia",
-                            "In India"
-                        },
-                        Answers = new List<string> {
-                            GlobalConstants.CorrectAnswer,
-                            "eh?",
-                            "No, ma era come se lo fosse..."
+                            "Anche, ma restiamo pragmatici...PER ADESSO"
                         }
                     }
                 }},
                 { GlobalConstants.Mirella, new List<QuestionModel> {
                     new QuestionModel {
+                        Id = 4,
                         Question = "Domanda 1?",
-                        ImagUrl = "arte.jpg",
+                        ImageUrl = "arte.jpg",
                         Options = new List<string> {
                             "Fabrizio",
                             "Patrizio",
@@ -77,8 +81,9 @@ namespace regalo_web.Repositories
                         }
                     },
                     new QuestionModel {
+                        Id = 5,
                         Question = "Domanda 2?",
-                        ImagUrl = "mojenca.jpg",
+                        ImageUrl = "mojenca.jpg",
                         Options = new List<string> {
                             "Un tritone",
                             "Un drago",
@@ -91,8 +96,9 @@ namespace regalo_web.Repositories
                         }
                     },
                     new QuestionModel {
+                        Id = 6,
                         Question = "Domanda 3?",
-                        ImagUrl = "trio.jpg",
+                        ImageUrl = "trio.jpg",
                         Options = new List<string> {
                             "In Sud Africa",
                             "A Pollena Trocchia",

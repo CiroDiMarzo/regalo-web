@@ -1,1 +1,16 @@
-<p>questions works!</p>
+<p>questions</p>
+<ul>
+    <li *ngFor="let question of questions">
+        <ul>
+            <li>{{question.question}}</li>
+            <li>{{assetsUrl}}/{{question.imageUrl}}</li>
+            <label *ngFor="let option of question.options; let optionIndex = index">
+                <input type="radio" 
+                    name="options_{{question.id}}"
+                    value="{{optionIndex}}"
+                    (click)="onChange($event, question.id, optionIndex)" disabled={{disabled}} />{{option}}
+            </label>
+        </ul>
+    </li>
+</ul>
+<p></p>

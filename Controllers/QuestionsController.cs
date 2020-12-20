@@ -47,7 +47,7 @@ namespace regalo_web.Controllers
             AnswerResultModel answerResultModel = null;
 
             await Task.Run(() =>
-                answerResultModel = this._questionsService.GetAnswer(this._configuration["AppSettings:Target"], answer.id, answer.answer)
+                answerResultModel = this._questionsService.GetAnswer(this._configuration["AppSettings:Target"], answer.QuestionId, answer.OptionId)
             );
 
             return answerResultModel;

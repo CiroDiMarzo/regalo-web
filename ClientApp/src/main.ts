@@ -8,12 +8,12 @@ export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
 }
 export function getAssetsUrl() {
-  return 'assets';
+  return '/assets';
 }
 
 const providers = [
   { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
-  { provide: 'ASSETS_URL', useFactory: getBaseUrl, deps: [] }
+  { provide: 'ASSETS_URL', useFactory: getAssetsUrl, deps: [] }
 ];
 
 if (environment.production) {
