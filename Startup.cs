@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using regalo_web.Repositories;
+using regalo_web.Services;
 
 namespace regalo_web
 {
@@ -29,6 +30,8 @@ namespace regalo_web
             });
 
             services.AddScoped<IQuestionsRepository, QuestionsRepository>();
+            services.AddScoped<IGiftRepository, GiftRepository>();
+            services.AddScoped<IQuestionsService, QuestionsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -22,8 +22,8 @@ namespace regalo_web.Controllers
             this._configuration = configuration;
         }
 
-        [HttpGet]
-        public async Task<GlobalInformationModel> GetAsync()
+        [HttpGet("link")]
+        public async Task<GlobalInformationModel> GetLinkAsync()
         {
             GlobalInformationModel global = null;
             

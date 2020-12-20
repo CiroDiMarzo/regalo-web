@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using regalo_web.Repositories;
 using regalo_web.ViewModels;
+using regalo_web.Services;
 
 namespace regalo_web.Controllers
 {
@@ -14,14 +15,17 @@ namespace regalo_web.Controllers
     {
         private readonly ILogger<QuestionsController> _logger;
         private readonly IQuestionsRepository _questionsRepository;
+        private readonly IQuestionsService _questionsService;
         private readonly IConfiguration _configuration;
 
         public QuestionsController(IConfiguration configuration,
             ILogger<QuestionsController> logger,
-            IQuestionsRepository questionsRepository)
+            IQuestionsRepository questionsRepository,
+            IQuestionsService questionsService)
         {
             this._logger = logger;
             this._questionsRepository = questionsRepository;
+            this._questionsService = questionsService;
             this._configuration = configuration;
         }
 
@@ -35,6 +39,18 @@ namespace regalo_web.Controllers
             );
 
             return questions;
+        }
+
+        [HttpPost]
+        public async Task<AnswerResultModel> PostAsync([FromBody] AnswerModel answer)
+        {
+            AnswerResultModel answerResultModel = null;
+
+            await Task.Run(() =>
+                answerResultModel = this._questionsService.GetAnswer(this._configuration["AppSettings:Target"], answer.id, answer.answer)
+            );
+
+            return answerResultModel;
         }
     }
 }
