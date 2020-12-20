@@ -25,7 +25,7 @@ namespace regalo_web.Services
             this._configuration = configuration;
         }
 
-        public AnswerResultModel GetAnswer(string key, int questionId, int answerIndex)
+        public AnswerResultModel GetAnswer(string key, int questionId, int optionId)
         {
             List<QuestionModel> questions = this._questionsRepository.GetQuestions(key);
 
@@ -33,7 +33,9 @@ namespace regalo_web.Services
 
             bool isCorrect = false;
 
-            if (question.Answers[answerIndex] == GlobalConstants.CorrectAnswer)
+            AnswerModel answer = question.Answers.FirstOrDefault(a => a.QuestionId == questionId && a.OptionId == optionId);
+            
+            if (answer.Title == GlobalConstants.CorrectAnswer)
             {
                 isCorrect = true;
             }
@@ -41,7 +43,7 @@ namespace regalo_web.Services
             return new AnswerResultModel
             {
                 IsCorrect = isCorrect,
-                Message = question.Answers[answerIndex]
+                Message = answer.Title
             };
         }
 
@@ -63,9 +65,9 @@ namespace regalo_web.Services
                     break;
                 }
 
-                string answer = question.Answers[givenAnswer.OptionId];
+                AnswerModel answer = question.Answers.FirstOrDefault(a => a.OptionId == givenAnswer.OptionId);
 
-                if (answer != GlobalConstants.CorrectAnswer)
+                if (answer.Title != GlobalConstants.CorrectAnswer)
                 {
                     result.IsValid = false;
                     result.Message = "Eh no, una risposta è sbagliata";

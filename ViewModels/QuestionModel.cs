@@ -8,8 +8,8 @@ namespace regalo_web.ViewModels
         public int Id { get; set; }
         public string ImageUrl { get; set; }
         public string Question { get; set; }
-        public List<string> Options { get; set; }
+        public List<OptionModel> Options { get; set; }
         [JsonIgnore]
-        public List<string> Answers { get; set; }
+        public List<AnswerModel> Answers { get; set; }
     }
 }

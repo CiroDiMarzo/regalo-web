@@ -4,5 +4,7 @@ namespace regalo_web.ViewModels
         public int QuestionId { get; set; }
 
         public int OptionId { get; set; }
+
+        public string Title { get; set; }
     }
 }

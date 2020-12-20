@@ -47,25 +47,23 @@ export class QuestionsComponent implements OnInit {
       });
   }
 
-  onChange($event, questionId, optionIndex) {
+  onChange($event, questionId, optionId) {
     let answer: AnswerModel = this.answers.find(a => a.questionId == questionId);
     if (!answer) {
-      answer = { questionId: questionId, optionId: optionIndex, isCorrect: false };
+      answer = { questionId: questionId, optionId: optionId, isCorrect: false, title: null };
       this.answers.push(answer);
     } else {
-      answer.optionId = optionIndex;
+      answer.optionId = optionId;
     }
 
     this.http.post<AnswerResultModel>(this.baseUrl + 'questions', answer, this.httpOptions)
       .subscribe(result => {
         this.answerResult = result;
         answer.isCorrect = this.answerResult.isCorrect;
-        console.log('ANSWERS', this.answers);
         if (this.answers.length == this.questions.length && 
-            this.answers.find(a => a.isCorrect == false) === undefined) {
+              this.answers.find(a => a.isCorrect == false) === undefined) {
           this.http.post<ValidationResult>(this.baseUrl + 'gift', this.answers, this.httpOptions)
             .subscribe(valResult => {
-              console.log('VALIDATION RESULT', valResult);
             })
         }
       });
@@ -76,12 +74,18 @@ interface QuestionModel {
   id: number;
   imageUrl: string;
   question: string;
-  options: Array<string>;
+  options: Array<OptionModel>;
+}
+
+interface OptionModel {
+  id: number,
+  title: string
 }
 
 interface AnswerModel {
   questionId: number;
   optionId: string;
+  title: string | undefined;
   isCorrect: boolean;
 }
 

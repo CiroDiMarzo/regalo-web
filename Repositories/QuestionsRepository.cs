@@ -22,92 +22,45 @@ namespace regalo_web.Repositories
                         Id = 1,
                         Question = "In quale università insegna l'artista?",
                         ImageUrl = "arte.jpg",
-                        Options = new List<string> {
-                            "Della Saggezza",
-                            "Della Bellezza",
-                            "Della Calvizia"
+                        Options = new List<OptionModel> {
+                            new OptionModel { Id = 1, Title = "Della Saggezza" },
+                            new OptionModel { Id = 2, Title = "Della Bellezza" },
+                            new OptionModel { Id = 3, Title = "Della Calvizia" }
                         },
-                        Answers = new List<string> {
-                            "Ne ha da condividere...però no",
-                            GlobalConstants.CorrectAnswer,
-                            "Potrei essere interessato! Ma no."
+                        Answers = new List<AnswerModel> {
+                            new AnswerModel { OptionId = 1, QuestionId = 1, Title = "Ne ha da condividere...però no" },
+                            new AnswerModel { OptionId = 2, QuestionId = 1, Title = GlobalConstants.CorrectAnswer },
+                            new AnswerModel { OptionId = 3, QuestionId = 1, Title = "Potrei essere interessato! Ma no." }
                         }
                     },
                     new QuestionModel {
                         Id = 2,
                         Question = "Dove è stata scattata questa foto?",
                         ImageUrl = "trio.jpg",
-                        Options = new List<string> {
-                            "In Sud Africa",
-                            "A Pollena Trocchia",
-                            "In India"
+                        Options = new List<OptionModel> {
+                            new OptionModel { Id = 4, Title = "In Sud Africa" },
+                            new OptionModel { Id = 5, Title = "A Pollena Trocchia" },
+                            new OptionModel { Id = 6, Title = "In India" }
                         },
-                        Answers = new List<string> {
-                            GlobalConstants.CorrectAnswer,
-                            "eh? O_o",
-                            "No, ma era come se lo fosse..."
+                        Answers = new List<AnswerModel> {
+                            new AnswerModel { OptionId = 4, QuestionId = 2, Title = GlobalConstants.CorrectAnswer },
+                            new AnswerModel { OptionId = 5, QuestionId = 2, Title = "eh? O_o" },
+                            new AnswerModel { OptionId = 6, QuestionId = 2, Title = "No, ma era come se lo fosse..." }
                         }
                     },
                     new QuestionModel {
                         Id = 3,
                         Question = "Chi abita in questa fonte?",
                         ImageUrl = "mojenca.jpg",
-                        Options = new List<string> {
-                            "Un tritone",
-                            "Un drago",
-                            "Un guru"
+                        Options = new List<OptionModel>{
+                            new OptionModel { Id = 7, Title = "Un tritone" },
+                            new OptionModel { Id = 8, Title = "Un drago" },
+                            new OptionModel { Id = 9, Title = "Un guru" }
                         },
-                        Answers = new List<string> {
-                            GlobalConstants.CorrectAnswer,
-                            "Magari!",
-                            "Anche, ma restiamo pragmatici...PER ADESSO"
-                        }
-                    }
-                }},
-                { GlobalConstants.Mirella, new List<QuestionModel> {
-                    new QuestionModel {
-                        Id = 4,
-                        Question = "Domanda 1?",
-                        ImageUrl = "arte.jpg",
-                        Options = new List<string> {
-                            "Fabrizio",
-                            "Patrizio",
-                            "Pancrazio"
-                        },
-                        Answers = new List<string> {
-                            "Ogni tanto veniva chiamato cosi...ma no",
-                            GlobalConstants.CorrectAnswer,
-                            "ahah. no."
-                        }
-                    },
-                    new QuestionModel {
-                        Id = 5,
-                        Question = "Domanda 2?",
-                        ImageUrl = "mojenca.jpg",
-                        Options = new List<string> {
-                            "Un tritone",
-                            "Un drago",
-                            "Un guru"
-                        },
-                        Answers = new List<string> {
-                            GlobalConstants.CorrectAnswer,
-                            "Magari!",
-                            "Forse...ma restiamo pragmatici adesso"
-                        }
-                    },
-                    new QuestionModel {
-                        Id = 6,
-                        Question = "Domanda 3?",
-                        ImageUrl = "trio.jpg",
-                        Options = new List<string> {
-                            "In Sud Africa",
-                            "A Pollena Trocchia",
-                            "In India"
-                        },
-                        Answers = new List<string> {
-                            GlobalConstants.CorrectAnswer,
-                            "eh?",
-                            "No, ma era come se lo fosse..."
+                        Answers = new List<AnswerModel> {
+                            new AnswerModel { OptionId = 7, QuestionId = 3, Title = GlobalConstants.CorrectAnswer },
+                            new AnswerModel { OptionId = 8, QuestionId = 3, Title = "Magari!" },
+                            new AnswerModel { OptionId = 9, QuestionId = 3, Title = "Anche, ma restiamo pragmatici...PER ADESSO" }
                         }
                     }
                 }}
