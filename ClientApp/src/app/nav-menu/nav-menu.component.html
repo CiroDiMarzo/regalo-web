@@ -3,8 +3,8 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">regalo_web</a>
-      <button
+      <a class="navbar-brand" [routerLink]="['/']">Auguri {{title}}</a>
+      <!-- <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -14,12 +14,12 @@
         (click)="toggle()"
       >
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
       <div
         class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
         [ngClass]="{ show: isExpanded }"
       >
-        <ul class="navbar-nav flex-grow">
+        <!-- <ul class="navbar-nav flex-grow">
           <li
             class="nav-item"
             [routerLinkActive]="['link-active']"
@@ -37,7 +37,7 @@
               >Fetch data</a
             >
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using regalo_web.Repositories;
 
 namespace regalo_web
 {
@@ -26,6 +27,8 @@ namespace regalo_web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<IQuestionsRepository, QuestionsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

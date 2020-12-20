@@ -7,9 +7,13 @@ import { environment } from './environments/environment';
 export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
 }
+export function getAssetsUrl() {
+  return 'assets';
+}
 
 const providers = [
-  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
+  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
+  { provide: 'ASSETS_URL', useFactory: getBaseUrl, deps: [] }
 ];
 
 if (environment.production) {
