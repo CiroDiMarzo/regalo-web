@@ -13,4 +13,10 @@
         </ul>
     </li>
 </ul>
-<p></p>
+<ul *ngIf="success">
+    <li *ngFor="let gift of gifts">
+        <h3>{{gift.description}}</h3>
+        <div><a href="{{gift.contentUrl}}" target="_blank">{{gift.title}}</a></div>
+        <div><img src="{{gift.pictureUrl}}" alt="{{gift.title}}" /></div>
+    </li>
+</ul>

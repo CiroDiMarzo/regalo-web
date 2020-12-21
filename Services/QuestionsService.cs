@@ -67,7 +67,7 @@ namespace regalo_web.Services
 
                 AnswerModel answer = question.Answers.FirstOrDefault(a => a.OptionId == givenAnswer.OptionId);
 
-                if (answer.Title != GlobalConstants.CorrectAnswer)
+                if (!answer.IsCorrect)
                 {
                     result.IsValid = false;
                     result.Message = "Eh no, una risposta è sbagliata";

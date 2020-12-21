@@ -24,9 +24,13 @@ export class QuestionsComponent implements OnInit {
 
   answers: AnswerModel[] = [];
 
+  gifts: GiftModel[] = [];
+
   answerResult: AnswerResultModel;
 
   disabled: string;
+
+  success: true;
 
   private httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
@@ -50,10 +54,12 @@ export class QuestionsComponent implements OnInit {
   onChange($event, questionId, optionId) {
     let answer: AnswerModel = this.answers.find(a => a.questionId == questionId);
     if (!answer) {
-      answer = { questionId: questionId, optionId: optionId, isCorrect: false, title: null };
+      answer = { questionId: questionId, optionId: optionId };
       this.answers.push(answer);
     } else {
       answer.optionId = optionId;
+      answer.questionId = questionId;
+      answer.isCorrect = undefined;
     }
 
     this.http.post<AnswerResultModel>(this.baseUrl + 'questions', answer, this.httpOptions)
@@ -64,6 +70,10 @@ export class QuestionsComponent implements OnInit {
               this.answers.find(a => a.isCorrect == false) === undefined) {
           this.http.post<ValidationResult>(this.baseUrl + 'gift', this.answers, this.httpOptions)
             .subscribe(valResult => {
+              if (valResult.isValid) {
+                this.success = true;
+                this.gifts = valResult.giftList;
+              }
             })
         }
       });
@@ -85,8 +95,8 @@ interface OptionModel {
 interface AnswerModel {
   questionId: number;
   optionId: string;
-  title: string | undefined;
-  isCorrect: boolean;
+  title?: string;
+  isCorrect?: boolean | undefined;
 }
 
 interface AnswerResultModel {
