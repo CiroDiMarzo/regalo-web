@@ -1,18 +1,23 @@
-<p>questions</p>
-<ul>
-    <li *ngFor="let question of questions">
-        <ul>
-            <li>{{question.question}}</li>
-            <li>{{assetsUrl}}/{{question.imageUrl}}</li>
-            <label *ngFor="let option of question.options">
-                <input type="radio" 
-                    name="options_{{question.id}}"
-                    value="{{option.id}}"
-                    (click)="onChange($event, question.id, option.id)" disabled={{disabled}} />{{option.title}}
-            </label>
-        </ul>
-    </li>
-</ul>
+<div class="questions-container">
+    <ul>
+        <li *ngFor="let question of questions">
+            <h5>{{question.question}}</h5>
+            <img src="{{assetsUrl}}/{{targetFolder}}/{{question.imageUrl}}" class="responsive" alt="{{question.qustion}}" />
+            <div class="list-group">
+                <a *ngFor="let option of question.options"
+                    href="#"
+                    class="list-group-item list-group-item-action"
+                    (click)="onChange($event, question.id, option.id)">
+                    {{option.title}}</a>
+            </div>
+            <ul class="list-group" *ngIf="question.givenAnswer">
+                <li
+                    [ngClass]="{'list-group-item-danger': !question.givenAnswer.isCorrect, 'list-group-item-success': question.givenAnswer.isCorrect }"
+                    class="list-group-item">{{question.responseMessage}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
 <ul *ngIf="success">
     <li *ngFor="let gift of gifts">
         <h3>{{gift.description}}</h3>

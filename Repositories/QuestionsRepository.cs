@@ -39,7 +39,7 @@ namespace regalo_web.Repositories
                         ImageUrl = "trio.jpg",
                         Options = new List<OptionModel> {
                             new OptionModel { Id = 4, Title = "In Sud Africa" },
-                            new OptionModel { Id = 5, Title = "A Pollena Trocchia" },
+                            new OptionModel { Id = 5, Title = "A Roncobilaccio" },
                             new OptionModel { Id = 6, Title = "In India" }
                         },
                         Answers = new List<AnswerModel> {

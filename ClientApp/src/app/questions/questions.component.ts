@@ -26,11 +26,11 @@ export class QuestionsComponent implements OnInit {
 
   gifts: GiftModel[] = [];
 
-  answerResult: AnswerResultModel;
-
   disabled: string;
 
   success: true;
+
+  targetFolder: string;
 
   private httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
@@ -49,6 +49,10 @@ export class QuestionsComponent implements OnInit {
       .subscribe(result => {
         this.questions = result;
       });
+    this.http.get<ConfigurationModel>(this.baseUrl + 'configuration')
+      .subscribe(result => {
+        this.targetFolder = result.targetFolder;
+      });
   }
 
   onChange($event, questionId, optionId) {
@@ -64,10 +68,17 @@ export class QuestionsComponent implements OnInit {
 
     this.http.post<AnswerResultModel>(this.baseUrl + 'questions', answer, this.httpOptions)
       .subscribe(result => {
-        this.answerResult = result;
-        answer.isCorrect = this.answerResult.isCorrect;
+        answer.isCorrect = result.isCorrect;
+
+        // set these properties so the response message can be displayed below the options
+        let question = this.questions.find(q => q.id == questionId);
+        question.givenAnswer = answer;
+        question.responseMessage = result.message;
+
+        // checks if all the questions have a correct answer
         if (this.answers.length == this.questions.length && 
               this.answers.find(a => a.isCorrect == false) === undefined) {
+                // if all the questions have a correct answer, then submit them for validation and get back the gifts
           this.http.post<ValidationResult>(this.baseUrl + 'gift', this.answers, this.httpOptions)
             .subscribe(valResult => {
               if (valResult.isValid) {
@@ -85,6 +96,8 @@ interface QuestionModel {
   imageUrl: string;
   question: string;
   options: Array<OptionModel>;
+  givenAnswer: AnswerModel;
+  responseMessage: string;
 }
 
 interface OptionModel {
@@ -115,4 +128,8 @@ interface ValidationResult {
   isValid: boolean;
   message: string;
   giftList: GiftModel[]
+}
+
+interface ConfigurationModel {
+  targetFolder: string;
 }
