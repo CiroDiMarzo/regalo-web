@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { NgModel } from '@angular/forms';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-questions',
@@ -9,6 +8,8 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
+
+  @ViewChild('carousel', null) carousel: NgbCarousel;
 
   images = [
     'foglia.jpg',
@@ -26,8 +27,6 @@ export class QuestionsComponent implements OnInit {
 
   gifts: GiftModel[] = [];
 
-  disabled: string;
-
   success: true;
 
   targetFolder: string;
@@ -37,11 +36,14 @@ export class QuestionsComponent implements OnInit {
   };
 
   constructor(private http: HttpClient,
+    private config: NgbCarouselConfig,
     @Inject('BASE_URL') baseUrl: string,
     @Inject('ASSETS_URL') assetsUrl: string) {
     this.assetsUrl = assetsUrl;
     this.baseUrl = baseUrl;
-    this.disabled = '';
+    this.config.showNavigationArrows = false;
+    this.config.showNavigationIndicators = false;
+    this.config.interval = 0;
   }
 
   ngOnInit() {
@@ -86,6 +88,12 @@ export class QuestionsComponent implements OnInit {
                 this.gifts = valResult.giftList;
               }
             })
+        }
+        else
+        {
+          if (answer.isCorrect) {
+            this.carousel.next();
+          }
         }
       });
   }
