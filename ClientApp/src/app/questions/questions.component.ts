@@ -78,14 +78,14 @@ export class QuestionsComponent implements OnInit {
                 this.answerService.setAnswers(this.answers);
                 setTimeout(() => {
                   this.router.navigate(['gift'])
-                }, 500);
+                }, 1000);
         }
         else
         {
           if (answer.isCorrect) {
             setTimeout(() => {
               this.carousel.next();
-            }, 500);
+            }, 1000);
           }
         }
       });
