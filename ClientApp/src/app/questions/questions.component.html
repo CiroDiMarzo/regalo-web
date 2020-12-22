@@ -6,21 +6,19 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 mb-2">
         <img src="{{assetsUrl}}/{{targetFolder}}/{{question.imageUrl}}" class="responsive" alt="{{question.qustion}}" />
       </div>
       <div class="col-md-6 col-sm-12">
-        <div class="list-group">
-          <a *ngFor="let option of question.options"
-              href="#"
-              class="list-group-item list-group-item-action"
-              (click)="onChange($event, question.id, option.id)">
-              {{option.title}}</a>
-        </div>
-        <ul class="list-group" *ngIf="question.givenAnswer">
-            <li [ngClass]="{'list-group-item-danger': !question.givenAnswer.isCorrect, 'list-group-item-success': question.givenAnswer.isCorrect }"
-                class="list-group-item">{{question.responseMessage}}</li>
-        </ul>
+          <button *ngFor="let option of question.options"
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block"
+            (click)="onChange($event, question.id, option.id)">{{option.title}}</button>
+          <div
+          [ngClass]="{'alert-danger': !question.givenAnswer.isCorrect, 'alert-success': question.givenAnswer.isCorrect }"
+            class="alert mt-2" *ngIf="question.givenAnswer" role="alert">
+            {{question.responseMessage}}
+          </div>
       </div>
     </div>
   </ng-template>
