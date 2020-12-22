@@ -23,7 +23,7 @@ namespace regalo_web.Repositories
                         Question = "In quale università insegna l'artista?",
                         ImageUrl = "arte.jpg",
                         Options = new List<OptionModel> {
-                            new OptionModel { Id = 1, Title = "Della Prontezza" },
+                            new OptionModel { Id = 1, Title = "Della Potenza" },
                             new OptionModel { Id = 2, Title = "Della Bellezza" },
                             new OptionModel { Id = 3, Title = "Della Calvizia" }
                         },
