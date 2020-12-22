@@ -40,12 +40,14 @@ namespace regalo_web.Repositories
                         Options = new List<OptionModel> {
                             new OptionModel { Id = 4, Title = "In Sud Africa" },
                             new OptionModel { Id = 5, Title = "A Roncobilaccio" },
-                            new OptionModel { Id = 6, Title = "In India" }
+                            new OptionModel { Id = 6, Title = "In India" },
+                            new OptionModel { Id = 10, Title = "Hard Rock Cafè Amsterdam" }
                         },
                         Answers = new List<AnswerModel> {
                             new AnswerModel { OptionId = 4, QuestionId = 2, Title = GlobalConstants.CorrectAnswer, IsCorrect = true },
                             new AnswerModel { OptionId = 5, QuestionId = 2, Title = "eh? O_o" },
-                            new AnswerModel { OptionId = 6, QuestionId = 2, Title = "No, ma era come se lo fosse..." }
+                            new AnswerModel { OptionId = 6, QuestionId = 2, Title = "No, ma era come se lo fosse..." },
+                            new AnswerModel { OptionId = 10, QuestionId = 2, Title = "Hell yeah! No!" }
                         }
                     },
                     new QuestionModel {

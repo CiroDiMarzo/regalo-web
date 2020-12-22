@@ -1,6 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AnswerModel, AnswerResultModel, ConfigurationModel, GiftModel, QuestionModel } from '../models/Models';
+import { AnswerService } from '../services/answer.service';
 
 @Component({
   selector: 'app-questions',
@@ -10,10 +14,6 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 export class QuestionsComponent implements OnInit {
 
   @ViewChild('carousel', null) carousel: NgbCarousel;
-
-  assetsUrl: string;
-
-  baseUrl: string;
 
   questions: QuestionModel[] = [];
 
@@ -30,17 +30,18 @@ export class QuestionsComponent implements OnInit {
   };
 
   constructor(private http: HttpClient,
+    private router: Router,
     private config: NgbCarouselConfig,
-    @Inject('BASE_URL') baseUrl: string,
-    @Inject('ASSETS_URL') assetsUrl: string) {
-    this.assetsUrl = assetsUrl;
-    this.baseUrl = baseUrl;
+    private answerService: AnswerService,
+    @Inject('BASE_URL') private baseUrl: string,
+    @Inject('ASSETS_URL') private assetsUrl: string) {
     this.config.showNavigationArrows = false;
     this.config.showNavigationIndicators = false;
     this.config.interval = 0;
   }
 
   ngOnInit() {
+    this.answerService.sendTitle("Rispondi alla domanda per favore!");
     this.http.get<QuestionModel[]>(this.baseUrl + 'questions')
       .subscribe(result => {
         this.questions = result;
@@ -74,66 +75,19 @@ export class QuestionsComponent implements OnInit {
         // checks if all the questions have a correct answer
         if (this.answers.length == this.questions.length && 
               this.answers.find(a => a.isCorrect == false) === undefined) {
-                // if all the questions have a correct answer, then submit them for validation and get back the gifts
-          this.http.post<ValidationResult>(this.baseUrl + 'gift', this.answers, this.httpOptions)
-            .subscribe(valResult => {
-              if (valResult.isValid) {
-                this.success = true;
-                this.gifts = valResult.giftList;
-              }
-            })
+                this.answerService.setAnswers(this.answers);
+                setTimeout(() => {
+                  this.router.navigate(['gift'])
+                }, 500);
         }
         else
         {
           if (answer.isCorrect) {
             setTimeout(() => {
               this.carousel.next();
-            }, 1500);
+            }, 500);
           }
         }
       });
   }
-}
-
-interface QuestionModel {
-  id: number;
-  imageUrl: string;
-  question: string;
-  options: Array<OptionModel>;
-  givenAnswer: AnswerModel;
-  responseMessage: string;
-}
-
-interface OptionModel {
-  id: number,
-  title: string
-}
-
-interface AnswerModel {
-  questionId: number;
-  optionId: string;
-  title?: string;
-  isCorrect?: boolean | undefined;
-}
-
-interface AnswerResultModel {
-  isCorrect: boolean;
-  message: string;
-}
-
-interface GiftModel {
-  title: string;
-  description: string;
-  pictureUrl: string;
-  contentUrl: string;
-}
-
-interface ValidationResult {
-  isValid: boolean;
-  message: string;
-  giftList: GiftModel[]
-}
-
-interface ConfigurationModel {
-  targetFolder: string;
 }
