@@ -5,17 +5,11 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.css']
+  styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
 
   @ViewChild('carousel', null) carousel: NgbCarousel;
-
-  images = [
-    'foglia.jpg',
-    'castello.jpg',
-    'ribes.jpg'
-  ]
 
   assetsUrl: string;
 
@@ -92,7 +86,9 @@ export class QuestionsComponent implements OnInit {
         else
         {
           if (answer.isCorrect) {
-            this.carousel.next();
+            setTimeout(() => {
+              this.carousel.next();
+            }, 1500);
           }
         }
       });

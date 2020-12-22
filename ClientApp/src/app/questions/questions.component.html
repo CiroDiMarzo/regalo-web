@@ -1,18 +1,28 @@
-<ngb-carousel #carousel *ngIf="images">
+<ngb-carousel #carousel *ngIf="questions">
   <ng-template ngbSlide *ngFor="let question of questions; let i = index">
-    <h5>{{question.question}}</h5>
-    <img src="{{assetsUrl}}/{{targetFolder}}/{{question.imageUrl}}" class="responsive" alt="{{question.qustion}}" />
-    <div class="list-group">
-        <a *ngFor="let option of question.options"
-            href="#"
-            class="list-group-item list-group-item-action"
-            (click)="onChange($event, question.id, option.id)">
-            {{option.title}}</a>
+    <div class="row">
+      <div class="col-12 mb-2 mt-5">
+        <h5>{{question.question}}</h5>
+      </div>
     </div>
-    <ul class="list-group" *ngIf="question.givenAnswer">
-        <li [ngClass]="{'list-group-item-danger': !question.givenAnswer.isCorrect, 'list-group-item-success': question.givenAnswer.isCorrect }"
-            class="list-group-item">{{question.responseMessage}}</li>
-    </ul>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <img src="{{assetsUrl}}/{{targetFolder}}/{{question.imageUrl}}" class="responsive" alt="{{question.qustion}}" />
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="list-group">
+          <a *ngFor="let option of question.options"
+              href="#"
+              class="list-group-item list-group-item-action"
+              (click)="onChange($event, question.id, option.id)">
+              {{option.title}}</a>
+        </div>
+        <ul class="list-group" *ngIf="question.givenAnswer">
+            <li [ngClass]="{'list-group-item-danger': !question.givenAnswer.isCorrect, 'list-group-item-success': question.givenAnswer.isCorrect }"
+                class="list-group-item">{{question.responseMessage}}</li>
+        </ul>
+      </div>
+    </div>
   </ng-template>
 </ngb-carousel>
 <ul *ngIf="success">
