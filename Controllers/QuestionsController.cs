@@ -10,7 +10,7 @@ using regalo_web.Services;
 namespace regalo_web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("q")]
     public class QuestionsController : ControllerBase
     {
         private readonly ILogger<QuestionsController> _logger;

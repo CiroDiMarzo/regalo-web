@@ -7,7 +7,7 @@ using regalo_web.ViewModels;
 namespace regalo_web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("co")]
     public class ConfigurationController : ControllerBase
     {
         private readonly ILogger<ConfigurationController> _logger;

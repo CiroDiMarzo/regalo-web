@@ -42,11 +42,11 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.answerService.sendTitle("Rispondi alla domanda per favore!");
-    this.http.get<QuestionModel[]>(this.baseUrl + 'questions')
+    this.http.get<QuestionModel[]>(this.baseUrl + 'q')
       .subscribe(result => {
         this.questions = result;
       });
-    this.http.get<ConfigurationModel>(this.baseUrl + 'configuration')
+    this.http.get<ConfigurationModel>(this.baseUrl + 'co')
       .subscribe(result => {
         this.targetFolder = result.targetFolder;
       });
@@ -63,7 +63,7 @@ export class QuestionsComponent implements OnInit {
       answer.isCorrect = undefined;
     }
 
-    this.http.post<AnswerResultModel>(this.baseUrl + 'questions', answer, this.httpOptions)
+    this.http.post<AnswerResultModel>(this.baseUrl + 'q', answer, this.httpOptions)
       .subscribe(result => {
         answer.isCorrect = result.isCorrect;
 

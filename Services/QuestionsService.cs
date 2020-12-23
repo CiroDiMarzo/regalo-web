@@ -60,7 +60,7 @@ namespace regalo_web.Services
                 if (givenAnswer == null)
                 {
                     result.IsValid = false;
-                    result.Message = "Manca una risposta! Eh no eh!";
+                    result.Message = "Mi sa che non hai risposto proprio a tuuutte le domande, eh...?";
 
                     break;
                 }
@@ -70,7 +70,7 @@ namespace regalo_web.Services
                 if (!answer.IsCorrect)
                 {
                     result.IsValid = false;
-                    result.Message = "Eh no, una risposta è sbagliata";
+                    result.Message = "Sembra che una risposta sia sbagliata, come è possibile!?";
 
                     break;
                 }

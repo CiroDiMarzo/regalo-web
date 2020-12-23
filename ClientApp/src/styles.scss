@@ -23,6 +23,23 @@ code {
   height: auto;
 }
 
+.container {
+  height: 100%;
+  width: 90%;
+}
+
+.fill {
+  background-image: url('/assets/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+html, body, .wrapper, .fill {
+  min-height: 100%;
+  height: 100%;
+}
+
 html {
   font-size: 1rem;
 }
@@ -30,6 +47,10 @@ html {
 @include media-breakpoint-up(sm) {
   html {
     font-size: 1.2rem;
+  }
+
+  .container {
+    // width: 415px;
   }
 }
 

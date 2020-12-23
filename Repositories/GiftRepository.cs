@@ -29,6 +29,18 @@ namespace regalo_web.Repositories
                         Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
                         ContentUrl = "https://www.google.com",
                         PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Poplar_Trees_of_Hunza_Valley.jpg/1024px-Poplar_Trees_of_Hunza_Valley.jpg"
+                    },
+                    new GiftModel {
+                        Title = "Omkara & Gotama, Amen - Booklet",
+                        Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
+                        ContentUrl = "https://www.google.com",
+                        PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Poplar_Trees_of_Hunza_Valley.jpg/1024px-Poplar_Trees_of_Hunza_Valley.jpg"
+                    },
+                    new GiftModel {
+                        Title = "Omkara & Gotama, Amen - Booklet",
+                        Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
+                        ContentUrl = "https://www.google.com",
+                        PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Poplar_Trees_of_Hunza_Valley.jpg/1024px-Poplar_Trees_of_Hunza_Valley.jpg"
                     }
                 } },
                 { GlobalConstants.Mirella, new List<GiftModel> {

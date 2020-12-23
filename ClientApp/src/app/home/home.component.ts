@@ -11,7 +11,7 @@ import { AnswerService } from '../services/answer.service';
 })
 export class HomeComponent implements OnInit {
   title: string;
-  text = 'Ho ho HO! Ecco il tuo regalo! Ma per essere sicuro che sia proprio tu, dovrai rispondere a qualche domanda...Pronta?';
+  text = 'Ho ho HO! Ecco il tuo regalo! Ma per essere sicuro che sia proprio tu, dovrai rispondere a qualche domanda...pronta?';
   
   enterAnimation: TextAnimation = {
     animation: rotateInDownLeft,
