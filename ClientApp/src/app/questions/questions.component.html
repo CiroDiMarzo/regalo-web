@@ -1,7 +1,7 @@
 <ngb-carousel #carousel *ngIf="questions">
   <ng-template ngbSlide *ngFor="let question of questions; let i = index">
     <div class="row">
-      <div class="col-12 mb-2 mt-5">
+      <div class="col-12 mb-2 mt-45">
         <h5>{{question.question}}</h5>
       </div>
     </div>
@@ -12,12 +12,16 @@
       <div class="col-md-6 col-sm-12">
           <button *ngFor="let option of question.options"
             type="button"
+            [disabled]="isWaiting"
             class="btn btn-outline-primary btn-lg btn-block"
             (click)="onChange($event, question.id, option.id)">{{option.title}}</button>
           <div
           [ngClass]="{'alert-danger': !question.givenAnswer.isCorrect, 'alert-success': question.givenAnswer.isCorrect }"
-            class="alert mt-2" *ngIf="question.givenAnswer" role="alert">
+            class="alert mt-2" *ngIf="question.givenAnswer && !isWaiting" role="alert">
             {{question.responseMessage}}
+          </div>
+          <div class="alert alert-secondary mt-2" *ngIf="isWaiting" role="alert">
+            Dunque...
           </div>
       </div>
     </div>

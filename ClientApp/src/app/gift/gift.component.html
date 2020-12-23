@@ -1,5 +1,7 @@
-
-<ng-container *ngIf="gifts && isValid">
+<div class="mt-5" *ngIf="!isLoaded">
+    <h5 class="text-center">Dunque...</h5>
+</div>
+<ng-container *ngIf="isValid && isLoaded && gifts">
     <div class="mt-5" *ngIf="!showPresent">
         <h5 class="text-center">Sei proprio tu!</h5>
         <div class="w-100">
@@ -19,7 +21,7 @@
         </div>
     </ng-container>
 </ng-container>
-<div class="mt-5" *ngIf="!isValid">
+<div class="mt-5" *ngIf="!isValid && isLoaded">
     <h5>{{errorMessage}}</h5>
     <a href="/">Clicca qui per tornare indietro</a>
 </div>

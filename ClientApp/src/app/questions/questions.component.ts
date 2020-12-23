@@ -21,7 +21,7 @@ export class QuestionsComponent implements OnInit {
 
   gifts: GiftModel[] = [];
 
-  success: true;
+  isWaiting: boolean;
 
   targetFolder: string;
 
@@ -53,7 +53,9 @@ export class QuestionsComponent implements OnInit {
   }
 
   onChange($event, questionId, optionId) {
+    this.isWaiting = true;
     let answer: AnswerModel = this.answers.find(a => a.questionId == questionId);
+    
     if (!answer) {
       answer = { questionId: questionId, optionId: optionId };
       this.answers.push(answer);
@@ -63,8 +65,15 @@ export class QuestionsComponent implements OnInit {
       answer.isCorrect = undefined;
     }
 
+    setTimeout(() => {
+      this.checkAnswer(answer, questionId);
+    }, 250);
+  }
+
+  checkAnswer(answer: AnswerModel, questionId: number) {
     this.http.post<AnswerResultModel>(this.baseUrl + 'q', answer, this.httpOptions)
       .subscribe(result => {
+        this.isWaiting = false;
         answer.isCorrect = result.isCorrect;
 
         // set these properties so the response message can be displayed below the options

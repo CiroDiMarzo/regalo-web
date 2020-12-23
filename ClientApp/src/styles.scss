@@ -44,13 +44,17 @@ html {
   font-size: 1rem;
 }
 
+.mt-45{
+  margin-top: 38px;
+}
+
 @include media-breakpoint-up(sm) {
   html {
     font-size: 1.2rem;
   }
 
-  .container {
-    // width: 415px;
+  .mt-45{
+    margin-top: 38px;
   }
 }
 
@@ -58,10 +62,18 @@ html {
   html {
     font-size: 1.4rem;
   }
+
+  .mt-45{
+    margin-top: 45px;
+  }
 }
 
 @include media-breakpoint-up(lg) {
   html {
     font-size: 1.6rem;
+  }
+
+  .mt-45{
+    margin-top: 50px;
   }
 }

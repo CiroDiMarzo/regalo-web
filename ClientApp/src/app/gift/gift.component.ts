@@ -12,11 +12,13 @@ import { TextAnimation } from 'ngx-teximate';
 })
 export class GiftComponent implements OnInit {
 
-  gifts: GiftModel[] = [];
-
   isValid: boolean;
 
+  isLoaded: boolean;
+
   showPresent: boolean;
+
+  gifts: GiftModel[] = [];
 
   errorMessage: string;
 
@@ -49,6 +51,7 @@ export class GiftComponent implements OnInit {
       .subscribe(valResult => {
         this.gifts = valResult.giftList;
         this.isValid = valResult.isValid;
+        this.isLoaded = true;
         this.errorMessage = valResult.message;
         
         if (!valResult.isValid) {
@@ -57,9 +60,9 @@ export class GiftComponent implements OnInit {
         else
         {
           setTimeout(() => {
-            this.answerService.sendTitle("Auguri! Clicca per scaricare!")
+            this.answerService.sendTitle("Auguri! Clicca per scaricare il regalo!")
             this.showPresent = true;
-          }, 6000);
+          }, 4500);
         }
       })
   }
