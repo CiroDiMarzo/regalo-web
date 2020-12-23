@@ -23,12 +23,12 @@ namespace regalo_web.Repositories
                         Question = "In quale università insegna l'artista?",
                         ImageUrl = "arte.jpg",
                         Options = new List<OptionModel> {
-                            new OptionModel { Id = 1, Title = "Della Potenza" },
+                            new OptionModel { Id = 1, Title = "Della Baldanza" },
                             new OptionModel { Id = 2, Title = "Della Bellezza" },
                             new OptionModel { Id = 3, Title = "Della Calvizia" }
                         },
                         Answers = new List<AnswerModel> {
-                            new AnswerModel { OptionId = 1, QuestionId = 1, Title = "Ne ha da condividere...però no" },
+                            new AnswerModel { OptionId = 1, QuestionId = 1, Title = "Non è il tipo, no" },
                             new AnswerModel { OptionId = 2, QuestionId = 1, Title = GlobalConstants.CorrectAnswer, IsCorrect = true },
                             new AnswerModel { OptionId = 3, QuestionId = 1, Title = "Potrei essere interessato! Ma no." }
                         }

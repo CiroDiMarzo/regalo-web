@@ -21,26 +21,14 @@ namespace regalo_web.Repositories
                     new GiftModel {
                         Title = "Omkara & Gotama, Amen - Audio CD",
                         Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
-                        ContentUrl = "https://www.google.com",
-                        PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/1024px-Bright_green_tree_-_Waikato.jpg"
+                        ContentUrl = "https://shop.mooji.org/?download_file=12756&order=wc_order_dIYE642opbTug&uid=a6611ec54deeb80eadc1fbe60896c5ca7869676fecfb6bdca3915b7d6bfc7220&key=b9060d8b-9459-437e-9e57-b1ebd557c9a7",
+                        PictureUrl = $"/assets/{GlobalConstants.Daniela}/cover.jpg"
                     },
                     new GiftModel {
                         Title = "Omkara & Gotama, Amen - Booklet",
                         Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
-                        ContentUrl = "https://www.google.com",
-                        PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Poplar_Trees_of_Hunza_Valley.jpg/1024px-Poplar_Trees_of_Hunza_Valley.jpg"
-                    },
-                    new GiftModel {
-                        Title = "Omkara & Gotama, Amen - Booklet",
-                        Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
-                        ContentUrl = "https://www.google.com",
-                        PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Poplar_Trees_of_Hunza_Valley.jpg/1024px-Poplar_Trees_of_Hunza_Valley.jpg"
-                    },
-                    new GiftModel {
-                        Title = "Omkara & Gotama, Amen - Booklet",
-                        Description = "Prayerful Songs Inspired by The Mala of God by Mooji",
-                        ContentUrl = "https://www.google.com",
-                        PictureUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Poplar_Trees_of_Hunza_Valley.jpg/1024px-Poplar_Trees_of_Hunza_Valley.jpg"
+                        ContentUrl = "https://shop.mooji.org/?download_file=12756&order=wc_order_dIYE642opbTug&uid=a6611ec54deeb80eadc1fbe60896c5ca7869676fecfb6bdca3915b7d6bfc7220&key=c11fded6-9333-4f96-8d58-ab603aca3b37",
+                        PictureUrl = $"/assets/{GlobalConstants.Daniela}/booklet.jpg"
                     }
                 } },
                 { GlobalConstants.Mirella, new List<GiftModel> {
